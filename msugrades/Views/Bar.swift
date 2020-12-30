@@ -39,12 +39,13 @@ struct Bar: View {
                     .foregroundColor(color)
                     .opacity(0.1)
             }
-            
-            Divider()
-            
-            Text(score)
-                .font(.caption2)
-                .bold()
+            if showCounts {
+                Divider()
+                
+                Text(score)
+                    .font(.caption2)
+                    .bold()
+            }
         }
     }
 }

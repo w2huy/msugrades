@@ -17,13 +17,18 @@ struct CoursesRow: View {
                 HStack {
                     
                     Text("\(course.term)")
-                        .font(.title2)
+                        .font(.subheadline)
                         .bold()
                         .foregroundColor(course.term.contains("FS") ? .orange : .green)
+                        .padding(8)
+                        .background(Capsule().stroke(course.term.contains("FS") ? Color.orange : Color.green,lineWidth: 2))
                     
                     Text("\(course.subject) \(course.code)")
                         .font(.subheadline)
                         .bold()
+                        .foregroundColor(Color(.darkGray))
+                        .padding(8)
+                        .background(Capsule().stroke(Color(.darkGray),lineWidth: 2))
                     
                     Spacer()
                     
@@ -34,11 +39,8 @@ struct CoursesRow: View {
                 HStack {
                     Spacer()
                     VStack(alignment: .trailing) {
-                        Text("Average Grade - \(course.average, specifier: "%.2f")")
-                            .font(.caption)
-                            .foregroundColor(Color(.systemGray))
                         Text("\(course.total) - total students")
-                            .font(.caption)
+                            .font(.subheadline)
                             .foregroundColor(Color(.systemGray))
                     }
                 }
