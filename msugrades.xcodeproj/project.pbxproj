@@ -45,6 +45,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A513CF87259C1301006D0FEA /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				A513CF8A259C139D006D0FEA /* Tab Bar */,
+				A513CF88259C1312006D0FEA /* Courses */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		A513CF88259C1312006D0FEA /* Courses */ = {
+			isa = PBXGroup;
+			children = (
+				A5DA06B2259ABD8100385625 /* Models */,
+				A5DA06B1259ABD6E00385625 /* ViewModels */,
+				A5DA06B0259ABD6800385625 /* Views */,
+			);
+			path = Courses;
+			sourceTree = "<group>";
+		};
+		A513CF8A259C139D006D0FEA /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		A513CF8C259C13DB006D0FEA /* Stats */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Stats;
+			sourceTree = "<group>";
+		};
 		A5DA0691259AB53200385625 = {
 			isa = PBXGroup;
 			children = (
@@ -64,10 +97,9 @@
 		A5DA069C259AB53200385625 /* msugrades */ = {
 			isa = PBXGroup;
 			children = (
-				A5DA06B1259ABD6E00385625 /* ViewModels */,
-				A5DA06B2259ABD8100385625 /* Models */,
-				A5DA06B0259ABD6800385625 /* Views */,
 				A5DA06B3259ABD9400385625 /* App */,
+				A513CF87259C1301006D0FEA /* Scenes */,
+				A513CF8C259C13DB006D0FEA /* Stats */,
 				A5DA06A1259AB53500385625 /* Assets.xcassets */,
 				A5DA06A6259AB53500385625 /* Info.plist */,
 				A5DA06A3259AB53500385625 /* Preview Content */,
