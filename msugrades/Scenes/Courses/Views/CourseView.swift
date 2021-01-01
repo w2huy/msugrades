@@ -12,83 +12,41 @@ struct CourseView: View {
     var course: Course
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                
-                // Info
-                Text("Course Title: \(course.title)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                
-                
-                Text("Instructor: \(course.instructor)")
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .foregroundColor(Color(.systemGray))
-                
-                
-                // Statistics
-                HStack {
+        ZStack {
+            
+            Color.background
+                .edgesIgnoringSafeArea(.all)
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
                     
-                    ZStack {
-                        Color(.systemGray6)
-                        
-                        VStack {
-                            Text("\(course.average, specifier: "%.2f")")
-                                .font(.largeTitle)
-                                .fontWeight(.semibold)
-                                .foregroundColor(Color.gray)
-                            Text("AVERAGE")
-                                .font(.headline)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        
-                    }.cornerRadius(3)
+                    // Info
                     
-                    ZStack {
-                        Color(.systemGray6)
+                    // Bar Chart
+                    HStack(alignment: .bottom, spacing: 4) {
                         
-                        VStack {
-                            Text("\(course.total)")
-                                .font(.largeTitle)
-                                .fontWeight(.semibold)
-                                .foregroundColor(Color.gray)
-                            Text("TOTAL")
-                                .font(.headline)
-                        }
-                        .padding()
-                        .frame(maxWidth: .infinity)
+                        Bar(gpa: course.four, total: course.total, color: .fourGreen, score: "4.0", height: 900, showCounts: true)
+                        Bar(gpa: course.threefive, total: course.total, color: .threefiveGreen, score: "3.5", height: 900, showCounts: true)
+                        Bar(gpa: course.three, total: course.total, color: .threeGreen, score: "3.0", height: 900, showCounts: true)
+                        Bar(gpa: course.twofive, total: course.total, color: .twofiveYellow, score: "2.5", height: 900, showCounts: true)
+                        Bar(gpa: course.two, total: course.total, color: .twoYellow, score: "2.0", height: 900, showCounts: true)
+                        Bar(gpa: course.onefive, total: course.total, color: .onefiveOrange, score: "1.5", height: 900, showCounts: true)
+                        Bar(gpa: course.one, total: course.total, color: .oneOrange, score: "1.0", height: 900, showCounts: true)
+                        Bar(gpa: course.zero, total: course.total, color: .zeroRed, score: "0.0", height: 900, showCounts: true)
                         
-                    }.cornerRadius(3)
+                        Bar(gpa: course.withdrawn, total: course.total, color: .blue, score: "W", height: 900, showCounts: true)
+                        Bar(gpa: course.incomplete, total: course.total, color: .purple, score: "I", height: 900, showCounts: true)
+                        
+                    }
+                    .frame(height: 300)
+                    
+                    
                     
                 }
-                
-                
-                // Bar Chart
-                HStack(alignment: .bottom, spacing: 4) {
-                    
-                    Bar(gpa: course.four, total: course.total, color: .green, score: "4.0", height: 900, showCounts: true)
-                    Bar(gpa: course.threefive, total: course.total, color: .green, score: "3.5", height: 900, showCounts: true)
-                    Bar(gpa: course.three, total: course.total, color: .green, score: "3.0", height: 900, showCounts: true)
-                    Bar(gpa: course.twofive, total: course.total, color: .yellow, score: "2.5", height: 900, showCounts: true)
-                    Bar(gpa: course.two, total: course.total, color: .yellow, score: "2.0", height: 900, showCounts: true)
-                    Bar(gpa: course.onefive, total: course.total, color: .red, score: "1.5", height: 900, showCounts: true)
-                    Bar(gpa: course.one, total: course.total, color: .red, score: "1.0", height: 900, showCounts: true)
-                    Bar(gpa: course.zero, total: course.total, color: .red, score: "0.0", height: 900, showCounts: true)
-                    
-                    Bar(gpa: course.withdrawn, total: course.total, color: .blue, score: "W", height: 900, showCounts: true)
-                    Bar(gpa: course.incomplete, total: course.total, color: .purple, score: "I", height: 900, showCounts: true)
-                    
-                }
-                .frame(height: 300)
-                
-                
-                
+                .padding()
             }
-            .padding()
+            .navigationTitle("\(course.subject) \(course.code)")
         }
-        .navigationTitle("\(course.term) - \(course.subject) \(course.code)")
     }
 }
 

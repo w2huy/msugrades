@@ -12,60 +12,48 @@ struct CoursesRow: View {
     var course: Course
     
     var body: some View {
-        VStack {
+        
+        ZStack {
+            
+            // Background
+            Color.white.opacity(0.00001)
+            
             VStack {
-                HStack {
+                HStack(alignment: .top) {
                     
                     Text("\(course.term)")
                         .font(.subheadline)
-                        .bold()
-                        .foregroundColor(course.term.contains("FS") ? .orange : .green)
+                        .foregroundColor(course.term.contains("FS") ? Color.orange : (course.term.contains("SS") ? Color.green : Color.blue))
                         .padding(8)
-                        .background(Capsule().stroke(course.term.contains("FS") ? Color.orange : Color.green,lineWidth: 2))
+                        .background(
+                            Capsule()
+                                .stroke(course.term.contains("FS") ? Color.orange : (course.term.contains("SS") ? Color.green : Color.blue)
+                                )
+                            )
                     
                     Text("\(course.subject) \(course.code)")
                         .font(.subheadline)
-                        .bold()
-                        .foregroundColor(Color(.darkGray))
                         .padding(8)
-                        .background(Capsule().stroke(Color(.darkGray),lineWidth: 2))
+                        .background(Capsule().stroke())
                     
                     Spacer()
                     
-                    Text("\(course.instructor)")
-                        .font(.headline)
-                    
-                }
-                HStack {
-                    Spacer()
                     VStack(alignment: .trailing) {
-                        Text("\(course.total) - total students")
-                            .font(.subheadline)
-                            .foregroundColor(Color(.systemGray))
+                        
+                        Text("\(course.instructor)")
+                            .font(.headline)
+                        
+                        Text("\(course.title)")
+                            .multilineTextAlignment(.trailing)
+                            .lineLimit(1)
+                            .foregroundColor(.secondary)
+                        
                     }
+                    
                 }
             }
-            
-            Spacer()
-            
-            HStack(alignment: .bottom, spacing: 4) {
-                
-                Bar(gpa: course.four, total: course.total, color: .green, score: "4.0", height: 300)
-                Bar(gpa: course.threefive, total: course.total, color: .green, score: "3.5", height: 300)
-                Bar(gpa: course.three, total: course.total, color: .green, score: "3.0", height: 300)
-                
-                Bar(gpa: course.twofive, total: course.total, color: .yellow, score: "2.5", height: 300)
-                Bar(gpa: course.two, total: course.total, color: .yellow, score: "2.0", height: 300)
-                Bar(gpa: course.onefive, total: course.total, color: .red, score: "1.5", height: 300)
-                Bar(gpa: course.one, total: course.total, color: .red, score: "1.0", height: 300)
-                Bar(gpa: course.zero, total: course.total, color: .red, score: "0.0", height: 300)
-                
-            }
-            
-            
+            .padding()
         }
-        .frame(height: 150)
-        .padding()
     }
 }
 

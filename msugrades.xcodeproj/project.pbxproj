@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A513CF9C259C1FEA006D0FEA /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513CF9B259C1FEA006D0FEA /* Color.swift */; };
 		A5DA069E259AB53200385625 /* msugradesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA069D259AB53200385625 /* msugradesApp.swift */; };
 		A5DA06A0259AB53200385625 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA069F259AB53200385625 /* ContentView.swift */; };
 		A5DA06A2259AB53500385625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DA06A1259AB53500385625 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A513CF9B259C1FEA006D0FEA /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		A5DA069A259AB53200385625 /* msugrades.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = msugrades.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DA069D259AB53200385625 /* msugradesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = msugradesApp.swift; sourceTree = "<group>"; };
 		A5DA069F259AB53200385625 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,7 +50,6 @@
 		A513CF87259C1301006D0FEA /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A513CF8A259C139D006D0FEA /* Tab Bar */,
 				A513CF88259C1312006D0FEA /* Courses */,
 			);
 			path = Scenes;
@@ -64,18 +65,12 @@
 			path = Courses;
 			sourceTree = "<group>";
 		};
-		A513CF8A259C139D006D0FEA /* Tab Bar */ = {
+		A513CF9A259C1FDC006D0FEA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				A513CF9B259C1FEA006D0FEA /* Color.swift */,
 			);
-			path = "Tab Bar";
-			sourceTree = "<group>";
-		};
-		A513CF8C259C13DB006D0FEA /* Stats */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Stats;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A5DA0691259AB53200385625 = {
@@ -97,9 +92,9 @@
 		A5DA069C259AB53200385625 /* msugrades */ = {
 			isa = PBXGroup;
 			children = (
+				A513CF9A259C1FDC006D0FEA /* Extensions */,
 				A5DA06B3259ABD9400385625 /* App */,
 				A513CF87259C1301006D0FEA /* Scenes */,
-				A513CF8C259C13DB006D0FEA /* Stats */,
 				A5DA06A1259AB53500385625 /* Assets.xcassets */,
 				A5DA06A6259AB53500385625 /* Info.plist */,
 				A5DA06A3259AB53500385625 /* Preview Content */,
@@ -228,6 +223,7 @@
 				A5DA06B5259ABDAC00385625 /* Courses.swift in Sources */,
 				A5DA06C6259B25B700385625 /* CourseView.swift in Sources */,
 				A5DA06C9259B282900385625 /* CoursesRow.swift in Sources */,
+				A513CF9C259C1FEA006D0FEA /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -368,7 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = wi2.msugrades;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -390,7 +386,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = wi2.msugrades;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

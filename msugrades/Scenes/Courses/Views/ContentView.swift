@@ -14,39 +14,54 @@ struct ContentView: View {
     @State var searchText: String = ""
     @State var isSearching: Bool = false
     
-    @State var courseCount: Int = 30
-    
     var body: some View {
         NavigationView {
-            ScrollView {
+            
+            ZStack {
                 
-                // Search Bar Subject
-                SearchBarView(viewModel: viewModel, placeholder:"ex: CSE 325", searchText: $searchText, isSearching: $isSearching)
+                // Background
+                Color.background
+                    .edgesIgnoringSafeArea(.all)
                 
-                // List
-                ForEach(self.viewModel.courses, id: \.self) { course in
+                ScrollView {
                     
-                    NavigationLink(
-                        destination: CourseView(course: course),
-                        label: {
-                            
-                            // Row
-                            CoursesRow(course: course)
-                            
-                        }).buttonStyle(PlainButtonStyle())
+                    // Search Bar Subject
+                    SearchBarView(viewModel: viewModel, placeholder:"ex: CSE 325", searchText: $searchText, isSearching: $isSearching)
                     
-                    Divider()
-                        .background(Color(.systemGray4))
-                        .padding(.leading)
+                    // Count
+                    if viewModel.courses.count != 0 {
+                        HStack {
+                            Text("\(viewModel.courses.count) matches")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                                .padding(.leading, 8)
+                            Spacer()
+                        }
+                        .padding()
+                    }
+                    
+                    // List
+                    ForEach(self.viewModel.courses, id: \.self) { course in
+                        
+                        NavigationLink(
+                            destination: CourseView(course: course),
+                            label: {
+                                
+                                // Row
+                                CoursesRow(course: course)
+                                
+                            }).buttonStyle(PlainButtonStyle())
+                        
+                        Divider()
+                            .background(Color(.systemGray4))
+                            .padding(.leading)
+                        
+                    }
                     
                 }
-                
+                .navigationTitle("MSU Grades")
             }
-            .navigationTitle("MSU Grades")
         }
-        .onAppear(perform: {
-            viewModel.loadData(course: "CSE 325")
-        })
     }
     
 }

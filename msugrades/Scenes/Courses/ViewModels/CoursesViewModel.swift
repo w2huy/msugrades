@@ -9,30 +9,30 @@ import Foundation
 
 class CoursesViewModel: ObservableObject {
     
-    // @Published var messages = "Messages inside obserable object"
-    
     @Published var courses = [Course]()
     
     func loadData(course: String) {
         
         let endingUrl = formatNicely(course: course)
         
-        let apiurl = "https://www.msugradesapi.com/grades/\(endingUrl)"
-        
-        guard let url = URL(string: apiurl) else { return }
-        let request = URLRequest(url: url)
-        URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                if let decodedResponse = try? JSONDecoder().decode(Courses.self, from: data) {
-                    DispatchQueue.main.async {
-                        self.courses = decodedResponse.courses
-                        print(self.courses.count)
+        if endingUrl.count > 4 {
+            let apiurl = "https://www.msugradesapi.com/grades/\(endingUrl)"
+            
+            guard let url = URL(string: apiurl) else { return }
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    if let decodedResponse = try? JSONDecoder().decode(Courses.self, from: data) {
+                        DispatchQueue.main.async {
+                            self.courses = decodedResponse.courses
+                            print(self.courses.count)
+                        }
+                        return
                     }
-                    return
                 }
-            }
-            print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
-        }.resume()
+                print("Fetch failed: \(error?.localizedDescription ?? "Unknown error")")
+            }.resume()
+        }
         
     }
     
@@ -42,6 +42,7 @@ class CoursesViewModel: ObservableObject {
         str = str.replacingOccurrences(of: " ", with: "_")
         
         return str
+        
     }
 }
 
