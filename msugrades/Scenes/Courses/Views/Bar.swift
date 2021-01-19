@@ -21,7 +21,6 @@ struct Bar: View {
             if showCounts {
                 Text("\(gpa)")
                     .font(.caption2)
-                    .foregroundColor(Color(.darkGray))
                     .bold()
             }
             
@@ -39,13 +38,11 @@ struct Bar: View {
                     .foregroundColor(color)
                     .opacity(0.1)
             }
-            if showCounts {
-                Divider()
-                
-                Text(score)
-                    .font(.caption2)
-                    .bold()
-            }
+            Divider()
+            
+            Text(score)
+                .font(.caption2)
+                .bold()
         }
     }
 }

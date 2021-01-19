@@ -6,24 +6,32 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct SearchBarView: View {
     
     @ObservedObject var viewModel: CoursesViewModel
     
     var placeholder: String
+    @Binding var error: Bool
     @Binding var searchText: String
     @Binding var isSearching: Bool
     
     var body: some View {
         HStack{
             HStack{
-                TextField(placeholder, text: $searchText)
-                    .padding(.leading, 24)
+                TextField(placeholder, text: $searchText, onCommit: {
+                    isSearching = false
+                    viewModel.loadData(course: searchText) { (res) in
+                        error = !res
+                        print(error)
+                    }
+                    UIApplication.shared.endEditing()
+                })
+                .disableAutocorrection(true)
+                .padding(.leading, 16)
             }
             .padding()
-            .background(Color(.systemGray5))
-            .cornerRadius(7.0)
             .padding(.horizontal)
             .onTapGesture(perform: {
                 isSearching = true
@@ -41,31 +49,33 @@ struct SearchBarView: View {
                             Image(systemName: "xmark.circle.fill")
                                 .padding(.vertical)
                         })
+                        
+                        Button(action: {
+                            isSearching.toggle()
+                            UIApplication.shared.endEditing()
+                        }, label: {
+                            Text("Cancel")
+                                .fontWeight(.light)
+                        })
                     }
                     
-                }.padding(.horizontal, 32)
+                }.padding(.horizontal)
                 .foregroundColor(.gray)
+                
             ).transition(.move(edge: .trailing))
-            .animation(.easeInOut)
-            
-            if isSearching {
-                Button(action: {
-                    
-                    isSearching = false
-                    viewModel.loadData(course: searchText)
-                    
-                    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                    
-                }, label: {
-                    Text("Search")
-                        .fontWeight(.bold)
-                        .padding(.trailing)
-                        .padding(.leading, -7)
-                })
-                .transition(.move(edge: .trailing))
-                .animation(.easeInOut)
-            }
             
         }
+    }
+}
+
+extension UIApplication {
+    func endEditing() {
+        sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
+}
+
+struct SearchBarView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchBarView(viewModel: CoursesViewModel(), placeholder: "Search by Course Code", error: .constant(true), searchText: .constant(""), isSearching: .constant(true))
     }
 }
