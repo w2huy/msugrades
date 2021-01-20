@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Bar: View {
+struct BarView: View {
     
     var gpa: Int
     var total: Int
@@ -49,6 +49,6 @@ struct Bar: View {
 
 struct Bar_Previews: PreviewProvider {
     static var previews: some View {
-        Bar(gpa: 50, total: 182, color: .blue, score: "4.0", height: 300)
+        BarView(gpa: 50, total: 182, color: .blue, score: "4.0", height: 300)
     }
 }

@@ -38,14 +38,14 @@ struct CoursesRow: View {
                 }
                 HStack {
                     HStack(alignment: .bottom, spacing: 8) {
-                        Bar(gpa: viewModel.course.four, total: viewModel.course.total, color: .fourGreen, score: "4.0", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.threefive, total: viewModel.course.total, color: .threefiveGreen, score: "3.5", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.three, total: viewModel.course.total, color: .threeGreen, score: "3.0", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.twofive, total: viewModel.course.total, color: .twofiveYellow, score: "2.5", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.two, total: viewModel.course.total, color: .twoYellow, score: "2.0", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.onefive, total: viewModel.course.total, color: .onefiveOrange, score: "1.5", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.one, total: viewModel.course.total, color: .oneOrange, score: "1.0", height: 100, showCounts: true)
-                        Bar(gpa: viewModel.course.zero, total: viewModel.course.total, color: .zeroRed, score: "0.0", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.four, total: viewModel.course.total, color: .fourGreen, score: "4.0", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.threefive, total: viewModel.course.total, color: .threefiveGreen, score: "3.5", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.three, total: viewModel.course.total, color: .threeGreen, score: "3.0", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.twofive, total: viewModel.course.total, color: .twofiveYellow, score: "2.5", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.two, total: viewModel.course.total, color: .twoYellow, score: "2.0", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.onefive, total: viewModel.course.total, color: .onefiveOrange, score: "1.5", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.one, total: viewModel.course.total, color: .oneOrange, score: "1.0", height: 100, showCounts: true)
+                        BarView(gpa: viewModel.course.zero, total: viewModel.course.total, color: .zeroRed, score: "0.0", height: 100, showCounts: true)
                     }
                     .frame(height: 100)
                     .padding(.trailing)

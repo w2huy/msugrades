@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import PartialSheet
 
 struct CourseView: View {
     
+    @EnvironmentObject var partialSheetManager: PartialSheetManager
     @ObservedObject var viewModel: CourseViewModel
     
     var body: some View {
@@ -16,7 +18,7 @@ struct CourseView: View {
             
             ScrollView {
                 
-                VStack(spacing: 16) {
+                VStack(spacing: 32) {
                     
                     
                     
@@ -49,17 +51,17 @@ struct CourseView: View {
                     
                     HStack(alignment: .bottom, spacing: 8) {
                         
-                        Bar(gpa: viewModel.course.four, total: viewModel.course.total, color: .fourGreen, score: "4.0", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.threefive, total: viewModel.course.total, color: .threefiveGreen, score: "3.5", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.three, total: viewModel.course.total, color: .threeGreen, score: "3.0", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.twofive, total: viewModel.course.total, color: .twofiveYellow, score: "2.5", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.two, total: viewModel.course.total, color: .twoYellow, score: "2.0", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.onefive, total: viewModel.course.total, color: .onefiveOrange, score: "1.5", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.one, total: viewModel.course.total, color: .oneOrange, score: "1.0", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.zero, total: viewModel.course.total, color: .zeroRed, score: "0.0", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.four, total: viewModel.course.total, color: .fourGreen, score: "4.0", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.threefive, total: viewModel.course.total, color: .threefiveGreen, score: "3.5", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.three, total: viewModel.course.total, color: .threeGreen, score: "3.0", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.twofive, total: viewModel.course.total, color: .twofiveYellow, score: "2.5", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.two, total: viewModel.course.total, color: .twoYellow, score: "2.0", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.onefive, total: viewModel.course.total, color: .onefiveOrange, score: "1.5", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.one, total: viewModel.course.total, color: .oneOrange, score: "1.0", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.zero, total: viewModel.course.total, color: .zeroRed, score: "0.0", height: 900, showCounts: true)
                         
-                        Bar(gpa: viewModel.course.withdrawn, total: viewModel.course.total, color: .blue, score: "W", height: 900, showCounts: true)
-                        Bar(gpa: viewModel.course.incomplete, total: viewModel.course.total, color: .purple, score: "I", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.withdrawn, total: viewModel.course.total, color: .blue, score: "W", height: 900, showCounts: true)
+                        BarView(gpa: viewModel.course.incomplete, total: viewModel.course.total, color: .purple, score: "I", height: 900, showCounts: true)
                         
                     }
                     .frame(height: 250)
@@ -173,6 +175,18 @@ struct CourseView: View {
             }
         }
         .navigationBarTitle("\(viewModel.getTerm())", displayMode: .inline)
+        .navigationBarItems(trailing:
+            Button(action: {
+                self.partialSheetManager.showPartialSheet({
+                    print("Partial sheet dismissed")
+                }) {
+                    CompareView(viewModel: viewModel)
+                }
+            }, label: {
+                Image(systemName: "arrow.left.arrow.right")
+            })
+        )
+        .addPartialSheet()
     }
 }
 

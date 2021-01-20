@@ -13,12 +13,14 @@ struct msugradesApp: App {
     
     let persistenceController = PersistenceController.shared
     let sheetManager: PartialSheetManager = PartialSheetManager()
+    var compareCourses = CompareCourses() 
     
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(sheetManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(sheetManager)
+                .environmentObject(compareCourses)
         }
     }
 }

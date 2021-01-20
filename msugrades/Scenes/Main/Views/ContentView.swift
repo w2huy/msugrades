@@ -10,18 +10,17 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-//        TabView() {
+        TabView() {
             CoursesView()
-                .accentColor(.green)
-//                .tabItem {
-//                    Image(systemName: "chart.bar.xaxis")
-//                }
-            
-//            Text("Tab 2")
-//                .tabItem {
-//                    Image(systemName: "chart.pie.fill")
-//                }
-//        }.accentColor(.green)
+                .tabItem {
+                    Image(systemName: "chart.bar.xaxis")
+                }
+            Text("Tab 2")
+                .tabItem {
+                    Image(systemName: "chart.pie.fill")
+                }
+        }
+        .accentColor(.green)
     }
 }
 
