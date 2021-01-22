@@ -16,6 +16,7 @@
 		A554DBAE25B7D1C00073934D /* CompareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554DBAD25B7D1C00073934D /* CompareView.swift */; };
 		A554DBB625B7D64A0073934D /* CompareCourses.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554DBB525B7D64A0073934D /* CompareCourses.swift */; };
 		A554DBBA25B7E9DA0073934D /* IsHidden.swift in Sources */ = {isa = PBXBuildFile; fileRef = A554DBB925B7E9DA0073934D /* IsHidden.swift */; };
+		A59AFCC225BACDB30002FFD3 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59AFCC125BACDB30002FFD3 /* ProfileView.swift */; };
 		A5DA069E259AB53200385625 /* msugradesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA069D259AB53200385625 /* msugradesApp.swift */; };
 		A5DA06A0259AB53200385625 /* CoursesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DA069F259AB53200385625 /* CoursesView.swift */; };
 		A5DA06A2259AB53500385625 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5DA06A1259AB53500385625 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 		A554DBAD25B7D1C00073934D /* CompareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareView.swift; sourceTree = "<group>"; };
 		A554DBB525B7D64A0073934D /* CompareCourses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompareCourses.swift; sourceTree = "<group>"; };
 		A554DBB925B7E9DA0073934D /* IsHidden.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IsHidden.swift; sourceTree = "<group>"; };
+		A59AFCC125BACDB30002FFD3 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		A5DA069A259AB53200385625 /* msugrades.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = msugrades.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5DA069D259AB53200385625 /* msugradesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = msugradesApp.swift; sourceTree = "<group>"; };
 		A5DA069F259AB53200385625 /* CoursesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoursesView.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 			children = (
 				A554DBA925B5290B0073934D /* Main */,
 				A513CF88259C1312006D0FEA /* Courses */,
+				A59AFCBD25BACD780002FFD3 /* Profile */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -103,6 +106,38 @@
 			isa = PBXGroup;
 			children = (
 				A508D2C825A010B100F42D71 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A59AFCBD25BACD780002FFD3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				A59AFCBE25BACD8D0002FFD3 /* Models */,
+				A59AFCBF25BACD940002FFD3 /* ViewModels */,
+				A59AFCC025BACD9E0002FFD3 /* Views */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		A59AFCBE25BACD8D0002FFD3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A59AFCBF25BACD940002FFD3 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		A59AFCC025BACD9E0002FFD3 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A59AFCC125BACDB30002FFD3 /* ProfileView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -269,6 +304,7 @@
 				A5DA06B9259ABDE700385625 /* CoursesViewModel.swift in Sources */,
 				A5DA069E259AB53200385625 /* msugradesApp.swift in Sources */,
 				A5DA06B5259ABDAC00385625 /* Courses.swift in Sources */,
+				A59AFCC225BACDB30002FFD3 /* ProfileView.swift in Sources */,
 				A5DA06C6259B25B700385625 /* CourseView.swift in Sources */,
 				A508D270259F0D5600F42D71 /* CourseViewModel.swift in Sources */,
 				A508D2C925A010B100F42D71 /* ContentView.swift in Sources */,
@@ -404,6 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"msugrades/Preview Content\"";
 				DEVELOPMENT_TEAM = CQDTS59CXG;
 				ENABLE_PREVIEWS = YES;
@@ -426,6 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"msugrades/Preview Content\"";
 				DEVELOPMENT_TEAM = CQDTS59CXG;
 				ENABLE_PREVIEWS = YES;

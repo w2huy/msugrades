@@ -32,15 +32,17 @@ struct CoursesView: View {
                     Divider()
                     
                     ZStack {
-                        VStack(spacing: 0) {
+                        VStack(alignment: .leading, spacing: 0) {
                             
                             // Matched Course Title
                             if viewModel.courses.count != 0 {
                                 
-                                HStack {
+                                VStack(alignment: .leading) {
+                                    Text("Course Title")
+                                        .font(.subheadline)
+                                        .foregroundColor(.gray)
                                     Text("\(viewModel.courses[0].subject) \(viewModel.courses[0].code) - \(viewModel.courses[0].title)")
                                         .font(.headline)
-                                    Spacer()
                                 }
                                 .padding()
                                 

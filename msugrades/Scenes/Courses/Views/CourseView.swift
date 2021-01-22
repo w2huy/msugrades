@@ -183,17 +183,12 @@ struct CourseView: View {
                     CompareView(viewModel: viewModel)
                 }
             }, label: {
-                Image(systemName: "arrow.left.arrow.right")
+                Text("Compare")
             })
         )
         .addPartialSheet()
-    }
-}
-
-struct CourseView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        CourseView(viewModel: CourseViewModel(course: Course(term: "SS20", subject: "CSE", code: 325, title: "Computer Systems", instructor: "MCCULLEN,MARK H", total: 183, average: 2.546448087, four: 37, threefive: 17, three: 29, twofive: 32, two: 28, onefive: 17, one: 10, zero: 13, incomplete: 0, withdrawn: 0, passed: 0, nograde: 0)))
-        
+        .onAppear(perform: {
+            UINavigationBar.appearance().barTintColor = UIColor.white
+        })
     }
 }

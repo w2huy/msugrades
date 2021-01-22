@@ -20,24 +20,23 @@ struct CompareView: View {
     var body: some View {
         VStack {
             
-            HStack {
+            HStack(alignment: .bottom) {
                 
-                Text("Compare Course")
-                    .font(.headline)
+                Text("Compare Courses")
+                    .font(.title)
+                    .bold()
                 
                 Spacer()
                 
                 Button(action: {
                     compareCourses.courses.append(viewModel.course)
                 }, label: {
-                    Text("Save")
+                    Text("Add")
                 })
                 .isHidden(compareCourses.courses.contains(viewModel.course))
                 
             }
             .padding()
-            
-            Divider()
             
             
             
@@ -48,7 +47,7 @@ struct CompareView: View {
                     
                 }.onDelete(perform: delete)
                 
-                Text("Features:\n\nSaving:\nStart saving a list of courses to compare by tapping the Save.\n\nDelete:\nSwipe left at a row to delete a course from your list.").foregroundColor(Color(.systemGray))
+                Text("Saving:\nStart saving a list of courses to compare by tapping the Save.\n\nDelete:\nSwipe left at a row to delete a course from your list.").foregroundColor(Color(.systemGray))
             }
             
             
