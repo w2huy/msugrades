@@ -11,7 +11,10 @@ import PartialSheet
 struct CourseView: View {
     
     @EnvironmentObject var partialSheetManager: PartialSheetManager
+    @EnvironmentObject var yourCoursesVM: YourCoursesViewModel
     @ObservedObject var viewModel: CourseViewModel
+    @State var bookmarked: Bool = false
+    @State var presentBookmarked: Bool = false
     
     var body: some View {
         ZStack {
@@ -174,21 +177,56 @@ struct CourseView: View {
                 .padding()
             }
         }
+        .onAppear(perform: {
+            if yourCoursesVM.courses.contains(viewModel.course) {
+                bookmarked = true
+            }
+        })
         .navigationBarTitle("\(viewModel.getTerm())", displayMode: .inline)
         .navigationBarItems(trailing:
-            Button(action: {
-                self.partialSheetManager.showPartialSheet({
-                    print("Partial sheet dismissed")
-                }) {
-                    CompareView(viewModel: viewModel)
-                }
-            }, label: {
-                Text("Compare")
-            })
+                                HStack {
+                                    Button(action: {
+                                        if bookmarked {
+                                            if let index = yourCoursesVM.courses.firstIndex(of: viewModel.course) {
+                                                yourCoursesVM.courses.remove(at: index)
+                                                presentBookmarked = false
+                                            }
+                                        } else {
+                                            yourCoursesVM.courses.append(viewModel.course)
+                                            presentBookmarked = true
+                                        }
+                                        bookmarked.toggle()
+                                    }, label: {
+                                        if bookmarked {
+                                            Image(systemName: "bookmark.fill")
+                                        }
+                                        else {
+                                            Image(systemName: "bookmark")
+                                        }
+                                    })
+//                                    Button(action: {
+//                                        self.partialSheetManager.showPartialSheet({
+//                                            print("Partial sheet dismissed")
+//                                        }) {
+//                                            CompareView(viewModel: viewModel)
+//                                        }
+//                                    }, label: {
+//                                        Image(systemName: "arrow.left.arrow.right")
+//                                    })
+                                }
         )
-        .addPartialSheet()
-        .onAppear(perform: {
-            UINavigationBar.appearance().barTintColor = UIColor.white
+//        .addPartialSheet()
+        .alert(isPresented: $presentBookmarked, content: {
+            Alert(title: Text("Saved to Your Courses!"), message: Text("\(viewModel.course.term)\n\(viewModel.course.subject) \(viewModel.course.code) - \(viewModel.course.title)\n\(viewModel.getInstructors())"), dismissButton: .default(Text("OK")))
         })
     }
 }
+
+struct CourseView_Previews: PreviewProvider {
+    static var previews: some View {
+        CourseView(viewModel: CourseViewModel(course: Course(term: "SS20", subject: "CSE", code: 325, title: "Computer Systems", instructor: "MCCULLEN,MARK H", total: 183, average: 2.546448087, four: 37, threefive: 17, three: 29, twofive: 32, two: 28, onefive: 17, one: 10, zero: 13, incomplete: 0, withdrawn: 0, passed: 0, nograde: 0)))
+            .environmentObject(YourCoursesViewModel())
+            .environmentObject(PartialSheetManager())
+    }
+}
+

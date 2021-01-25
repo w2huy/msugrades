@@ -11,7 +11,7 @@ import PartialSheet
 struct CompareView: View {
     
     @State var viewModel: CourseViewModel
-    @EnvironmentObject var compareCourses: CompareCourses
+    @EnvironmentObject var compareCoursesVM: CompareCoursesViewModel
     @EnvironmentObject var partialSheetManager: PartialSheetManager
     
     @State var removeAllTrue: Bool = true
@@ -21,34 +21,36 @@ struct CompareView: View {
         VStack {
             
             HStack(alignment: .bottom) {
-                
+
                 Text("Compare Courses")
-                    .font(.title)
+                    .font(.title3)
                     .bold()
-                
+
                 Spacer()
-                
+
                 Button(action: {
-                    compareCourses.courses.append(viewModel.course)
+                    compareCoursesVM.courses.append(viewModel.course)
                 }, label: {
                     Text("Add")
                 })
-                .isHidden(compareCourses.courses.contains(viewModel.course))
-                
+                .isHidden(compareCoursesVM.courses.contains(viewModel.course))
+
             }
             .padding()
             
             
             
             List {
-                ForEach(compareCourses.courses, id: \.self) { course in
+                ForEach(compareCoursesVM.courses, id: \.self) { course in
                     
                     CoursesRow(viewModel: CourseViewModel(course: course))
                     
                 }.onDelete(perform: delete)
                 
-                Text("Saving:\nStart saving a list of courses to compare by tapping the Save.\n\nDelete:\nSwipe left at a row to delete a course from your list.").foregroundColor(Color(.systemGray))
+                Text("Saving:\nStart saving a list of courses to compare by tapping on Save.\n\nDelete:\nSwipe left at a row to delete a course from your list.").foregroundColor(Color(.systemGray))
+                    .padding()
             }
+            .listStyle(PlainListStyle())
             
             
         }
@@ -58,7 +60,7 @@ struct CompareView: View {
     }
     
     func delete(at offsets: IndexSet) {
-        compareCourses.courses.remove(atOffsets: offsets)
+        compareCoursesVM.courses.remove(atOffsets: offsets)
     }
 }
 

@@ -9,18 +9,13 @@ import SwiftUI
 
 struct ContentView: View {
     
-    init() {
-        UITabBar.appearance().barTintColor = UIColor.white
-    }
-    
-    
     var body: some View {
         TabView() {
             CoursesView()
                 .tabItem {
                     Image(systemName: "chart.bar.xaxis")
                 }
-            ProfileView()
+            YourCoursesView()
                 .tabItem {
                     Image(systemName: "chart.pie.fill")
                 }

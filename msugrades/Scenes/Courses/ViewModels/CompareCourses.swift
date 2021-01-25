@@ -7,6 +7,8 @@
 
 import Foundation
 
-class CompareCourses: ObservableObject {
+class CompareCoursesViewModel: ObservableObject {
+    
     @Published var courses = [Course]()
+
 }
